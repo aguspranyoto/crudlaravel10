@@ -27,6 +27,24 @@
             ></button>
         </div>
         @endif
+        <form action="" method="GET">
+            <div class="row mb-3">
+                <label for="search" class="col-sm-2 col-form-label"
+                    >Cari Data</label
+                >
+                <div class="col-sm-10">
+                    <input
+                        class="form-control form-control-sm"
+                        name="search"
+                        id="search"
+                        type="text"
+                        placeholder="Search .."
+                        autofocus
+                        value="{{ $search }}"
+                    />
+                </div>
+            </div>
+        </form>
         <table class="table table-sm table-striped table-bordered">
             <thead>
                 <tr>
@@ -41,9 +59,11 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($students as $row)
+                @php $nomor = 1 + (($students->currentPage() - 1) *
+                $students->perpage()); @endphp @foreach ($students as $row)
                 <tr>
-                    <th>{{ $loop->iteration }}</th>
+                    <!-- <th>{{ $loop->iteration }}</th> -->
+                    <td>{{ $nomor++ }}</td>
                     <td>{{ $row->idstudents }}</td>
                     <td>{{ $row->fullname }}</td>
                     <td>{{ ($row->gender=='P') ? 'Pria' : 'Wanita' }}</td>
@@ -54,7 +74,7 @@
                         <button
                             onclick="window.location='{{ url('students/'.$row->idstudents) }}'"
                             type="button"
-                            class="btn btn-sm btn-warning"
+                            class="btn btn-sm btn-info"
                             title="Edit Data"
                         >
                             <i class="fas fa-edit"></i>
@@ -79,6 +99,8 @@
                 @endforeach
             </tbody>
         </table>
+        <!-- {{ $students->links() }} -->
+        {!! $students->appends(Request::except('page'))->render() !!}
     </div>
 </div>
 <script>

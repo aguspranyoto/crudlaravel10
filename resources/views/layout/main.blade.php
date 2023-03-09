@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Bootstrap demo</title>
+        <title>Data Mahasiswa</title>
         <link
             href="{{ asset('/') }}assets/dist/css/bootstrap.min.css"
             rel="stylesheet"
@@ -19,7 +19,7 @@
         <!-- navbar: start -->
         <nav class="navbar navbar-expand-lg bg-success navbar-dark">
             <div class="container">
-                <a class="navbar-brand" href="#">Laravel 10</a>
+                <a class="navbar-brand" href="#">Data Mahasiswa</a>
                 <button
                     class="navbar-toggler"
                     type="button"
